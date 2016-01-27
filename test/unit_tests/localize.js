@@ -1,8 +1,12 @@
 'use strict';
 let mocha = require('mocha');
 let should = require('should');
-let Term = require('../../../src/term/term.js');
 let tests = require('./british_terms.js');
+
+//apply the plugin
+const plugin = require('../../src/index.js');
+const nlp = require('../../../nlp-core');
+nlp.plugin(plugin);
 
 let tiny_tests = [
   ['accessorise', 'accessorize'],
@@ -29,16 +33,16 @@ describe('localize', function() {
   //americanize it
   it('americanize', function(done) {
     tests.forEach(function(a) {
-      let t = new Term(a[0]);
-      t.americanize().should.equal(a[1]);
+      let t = nlp.term(a[0]);
+      t.toAmerican().normal.should.equal(a[1]);
     });
     done();
   });
   //britishize it
   it('britishize', function(done) {
     tiny_tests.forEach(function(a) {
-      let t = new Term(a[1]);
-      t.britishize().should.equal(a[0]);
+      let t = nlp.term(a[1]);
+      t.toBritish().normal.should.equal(a[0]);
     });
     done();
   });
