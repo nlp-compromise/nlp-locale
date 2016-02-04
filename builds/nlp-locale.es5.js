@@ -4,7 +4,7 @@
 var _toAmerican = require('./to_american');
 var _toBritish = require('./to_british');
 
-var plugin = {
+var nlpLocale = {
   Term: {
     toBritish: function toBritish() {
       this.text = _toBritish(this.text);
@@ -19,11 +19,11 @@ var plugin = {
   }
 };
 
-module.exports = plugin;
+module.exports = nlpLocale;
 // const nlp = require('nlp_compromise');
-// nlp.plugin(plugin);
+// nlp.plugin(nlpLocale);
 // let w = nlp.term('favourite');
-// console.log(w.toAmerican());
+// console.log(w.toAmerican().text);
 
 },{"./to_american":3,"./to_british":4}],2:[function(require,module,exports){
 'use strict';

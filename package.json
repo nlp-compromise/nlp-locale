@@ -2,8 +2,8 @@
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "name": "nlp-locale",
   "description": "management and conversion of written english dialects",
-  "version": "0.0.1",
-  "main": "src/index.js",
+  "version": "0.0.2",
+  "main": "builds/nlp-locale.es5.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/nlp-compromise/nlp-locale.git"

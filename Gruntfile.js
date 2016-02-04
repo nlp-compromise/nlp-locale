@@ -19,7 +19,7 @@ module.exports = function (grunt) {
     filesize: {
       base: {
         files: [{
-          src: ['./build/nlp-locale.es5.js']
+          src: ['./builds/nlp-locale.es5.js']
         }],
         options: {
           ouput: [{
