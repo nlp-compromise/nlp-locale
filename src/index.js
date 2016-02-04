@@ -1,9 +1,8 @@
 'use strict';
-const nlp = require('../../nlp-core');
 const toAmerican = require('./to_american');
 const toBritish = require('./to_british');
 
-let plugin = {
+let nlpLocale = {
   Term: {
     toBritish : function() {
       this.text = toBritish(this.text);
@@ -17,9 +16,9 @@ let plugin = {
     }
   }
 };
-nlp.plugin(plugin);
 
-module.exports = plugin;
-
+module.exports = nlpLocale;
+// const nlp = require('nlp_compromise');
+// nlp.plugin(nlpLocale);
 // let w = nlp.term('favourite');
-// console.log(w.toAmerican());
+// console.log(w.toAmerican().text);

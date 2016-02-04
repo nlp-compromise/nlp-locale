@@ -14,8 +14,11 @@
     "watch": "grunt watch",
     "build": "grunt build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "nlp_compromise":">=3.0.0"
+  },
   "devDependencies": {
+    "babel-preset-es2015": "6.3.13",
     "babelify": "7.2.0",
     "grunt": "0.4.5",
     "grunt-contrib-watch": "0.6.1",
