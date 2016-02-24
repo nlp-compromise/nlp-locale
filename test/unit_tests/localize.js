@@ -5,7 +5,7 @@ let tests = require('./british_terms.js');
 
 //apply the plugin
 const plugin = require('../../src/index.js');
-const nlp = require('../../../nlp_compromise');
+const nlp = require('nlp_compromise');
 nlp.plugin(plugin);
 
 let tiny_tests = [
