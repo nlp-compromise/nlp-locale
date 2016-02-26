@@ -14,17 +14,33 @@ module.exports = function (grunt) {
         exec: 'node ./src/index.js'
       },
       build: {
-        exec: 'browserify ./src/index.js --standalone nlpLocale -t [ babelify --presets [ es2015 ] ] -o ./builds/nlp-locale.latest.js '
+        exec: 'browserify ./src/index.js --standalone nlpLocale -t [ babelify --presets [ es2015 ] ] -o ./builds/nlp-locale.js '
+      }
+    },
+
+    uglify: {
+      'do': {
+        src: ['./builds/nlp-locale.js'],
+        dest: './builds/nlp-locale.min.js'
       },
-      copy: {
-        exec: 'cp ./builds/nlp-locale.latest.js ./builds/nlp-locale.<%=pkg.version%>.js'
+      'options': {
+        preserveComments: false,
+        mangle: true,
+        banner: ' /*nlp_compromise <%= pkg.version %>  MIT*/\n\n',
+        compress: {
+          drop_console: true,
+          dead_code: true,
+          properties: true,
+          unused: true,
+          warnings: true
+        }
       }
     },
 
     filesize: {
       base: {
         files: [{
-          src: ['./builds/nlp-locale.latest.js']
+          src: ['./builds/nlp-locale.min.js']
         }],
         options: {
           ouput: [{
@@ -33,7 +49,6 @@ module.exports = function (grunt) {
         }
       }
     },
-
     mochaTest: {
       test: {
         options: {
@@ -61,6 +76,7 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-run');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-filesize');
@@ -70,5 +86,5 @@ module.exports = function (grunt) {
   grunt.registerTask('watch', ['watch']);
   grunt.registerTask('coverage', ['mocha_istanbul']);
   grunt.registerTask('test', ['mochaTest']);
-  grunt.registerTask('build', ['mochaTest', 'run:build', 'run:copy', 'filesize']);
+  grunt.registerTask('build', ['mochaTest', 'run:build',  'uglify', 'filesize']);
 };

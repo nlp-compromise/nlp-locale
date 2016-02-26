@@ -14,11 +14,43 @@ let nlpLocale = {
       this.rebuild();
       return this;
     }
+  },
+  Sentence:{
+    toBritish : function() {
+      this.terms.forEach((t)=>{
+        t.toBritish()
+      })
+      return this
+    },
+    toAmerican : function() {
+      this.terms.forEach((t)=>{
+        t.toAmerican()
+      })
+      return this
+    },
+  },
+  Text:{
+    toBritish : function() {
+      this.sentences.forEach((s)=>{
+        s.toBritish()
+      })
+      return this
+    },
+    toAmerican : function() {
+      this.sentences.forEach((s)=>{
+        s.toAmerican()
+      })
+      return this
+    },
   }
 };
 
 module.exports = nlpLocale;
+
 // const nlp = require('nlp_compromise');
 // nlp.plugin(nlpLocale);
-// let w = nlp.term('favourite');
-// console.log(w.toAmerican().text);
+// let t = nlp.text('it is certainly my favourite');
+// t.toAmerican()
+// console.log(t.text());
+// t.toBritish()
+// console.log(t.text());

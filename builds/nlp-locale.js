@@ -16,14 +16,46 @@ var nlpLocale = {
       this.rebuild();
       return this;
     }
+  },
+  Sentence: {
+    toBritish: function toBritish() {
+      this.terms.forEach(function (t) {
+        t.toBritish();
+      });
+      return this;
+    },
+    toAmerican: function toAmerican() {
+      this.terms.forEach(function (t) {
+        t.toAmerican();
+      });
+      return this;
+    }
+  },
+  Text: {
+    toBritish: function toBritish() {
+      this.sentences.forEach(function (s) {
+        s.toBritish();
+      });
+      return this;
+    },
+    toAmerican: function toAmerican() {
+      this.sentences.forEach(function (s) {
+        s.toAmerican();
+      });
+      return this;
+    }
   }
 };
 
 module.exports = nlpLocale;
+
 // const nlp = require('nlp_compromise');
 // nlp.plugin(nlpLocale);
-// let w = nlp.term('favourite');
-// console.log(w.toAmerican().text);
+// let t = nlp.text('it is certainly my favourite');
+// t.toAmerican()
+// console.log(t.text());
+// t.toBritish()
+// console.log(t.text());
 
 },{"./to_american":3,"./to_british":4}],2:[function(require,module,exports){
 'use strict';

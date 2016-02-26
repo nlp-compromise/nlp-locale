@@ -2,7 +2,7 @@
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
   "name": "nlp-locale",
   "description": "management and conversion of written english dialects",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "builds/nlp-locale.es5.js",
   "repository": {
     "type": "git",
@@ -15,12 +15,13 @@
     "build": "grunt build"
   },
   "dependencies": {
-    "nlp_compromise":">=3.0.0"
+    "nlp_compromise": ">=3.0.0"
   },
   "devDependencies": {
     "babel-preset-es2015": "6.3.13",
     "babelify": "7.2.0",
     "grunt": "0.4.5",
+    "grunt-contrib-uglify": "^0.11.1",
     "grunt-contrib-watch": "0.6.1",
     "grunt-filesize": "0.0.7",
     "grunt-mocha-istanbul": "3.0.1",
